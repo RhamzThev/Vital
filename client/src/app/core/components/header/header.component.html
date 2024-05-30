@@ -1,0 +1,12 @@
+<div class="flex-horizontal align-center space-between">
+    <a routerLink="/">
+        <h1>Logo</h1>
+    </a>
+    <div>
+        <button (click)="toggleDropdown()">Icon</button>
+        <div class="flex-vertical small-gap" *ngIf="dropdownOpen">
+            <a routerLink="/profile">Profile</a>
+            <a (click)="logOut()">Log Out</a>
+        </div>
+    </div>
+</div>

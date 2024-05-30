@@ -1,15 +1,16 @@
 import bcrypt from 'bcrypt';
-import { User } from '../model/user.model.js';
+import User from '../model/user.model.js';
 
 // Sign up a new user
 export const signUp = async (req, res) => {
     try {
-        const { username, password, email, sex, age, weight, height } = req.body;
+        const { username, password, email, sex, birthdate, weight, height } = req.body;
         // const hashedPassword = await bcrypt.hash(password, 10);
-        // const newUser = new User({ username, password: hashedPassword, email, sex, age, weight, height });
-        const newUser = new User({ username, password, email, sex, age, weight, height });
+        // const newUser = new User({ username, password: hashedPassword, email, sex, birthdate, weight, height });
+        const newUser = new User({ username, password, email, sex, birthdate, weight, height });
         await newUser.save();
-        res.status(201).send(newUser);
+        req.session.userId = newUser._id.toString();
+        res.status(201).send({ message: 'Signed up successfully' });
     } catch (error) {
         res.status(400).send(error);
     }

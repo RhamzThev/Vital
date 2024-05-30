@@ -1,51 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-    font-family: 'Trebuchet MS', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.component-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100vw;
-    height: 100vh;
-
-    background-color: rgb(247, 247, 247);
-}
-
-.component {
-    padding: 32px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-
-    background-color: white;
-}
-
-.horizontal {
+.flex-horizontal {
     display: flex;
     flex-direction: row;
 }
 
-.vertical {
+.flex-vertical {
     display: flex;
     flex-direction: column;
 }
 
-.center {
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
     align-items: center;
 }
 
-.left {
+.align-left {
     align-items: left;
-}
-
-input,
-button {
-    font-size: 1rem;
-    padding: 8px 16px;
 }
 
 .small-gap {
@@ -58,31 +36,4 @@ button {
 
 .large-gap {
     gap: 1rem;
-}
-
-input {
-    background-color: rgb(239, 239, 239);
-    border-width: 0;
-    color: black;
-    border-radius: 4px;
-    border-width: 0;
-}
-
-button {
-    background-color: rgb(63, 131, 255);
-    color: white;
-    border-radius: 4px;
-    border-width: 0;
-    text-decoration: none;
-}
-
-button:hover {
-    background-color: rgb(31, 61, 131);
-    transition: 0.25s;
-}
-
-.link {
-    font-size: 0.75rem;
-    text-decoration: none;
-    font-weight: bold;
 }

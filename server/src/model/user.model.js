@@ -22,8 +22,8 @@ const userSchema = new Schema({
         enum: ['male', 'female'],
         required: true
     },
-    age: {
-        type: Number,
+    birthdate: {
+        type: Date,
         required: true
     },
     weight: {
@@ -37,4 +37,6 @@ const userSchema = new Schema({
 });
 
 // Create the User model
-export const User = model('User', userSchema);
+const User = model('User', userSchema);
+
+export default User;

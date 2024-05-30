@@ -1,0 +1,13 @@
+.user-container {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    right: 0;
+    margin-top: 0.5rem;
+}
+
+.xxx {
+    background-color: gray;
+}
