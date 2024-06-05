@@ -22,7 +22,7 @@ export class HeaderComponent {
 
   logOut() {
     this.authService.logout().subscribe({
-      next: () => this.router.navigate(["./auth/login"])
+      next: () => this.router.navigate(["auth", "login"])
     })
   }
 

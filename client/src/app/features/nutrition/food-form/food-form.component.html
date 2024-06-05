@@ -1,0 +1,14 @@
+<button routerLink="../">Back</button>
+<h1>New Food</h1>
+<h3>Name: <input type="text" [(ngModel)]="this.food.name"></h3>
+<h3>Units: <input type="number" [(ngModel)]="this.food.units">
+    <label for="g">g</label>
+    <input id="g" type="radio" [(ngModel)]="this.food.units_type" name="units_type" value="g" />
+    <label for="ml">ml</label>
+    <input id="ml" type="radio" [(ngModel)]="this.food.units_type" name="units_type" value="ml" />
+</h3>
+<h3>Calories: <input [(ngModel)]="this.food.calories" type="number"></h3>
+<h3>Fats: <input [(ngModel)]="this.food.fats" type="number"> g</h3>
+<h3>Carbs: <input [(ngModel)]="this.food.carbs" type="number"> g</h3>
+<h3>Proteins: <input [(ngModel)]="this.food.proteins" type="number"> g</h3>
+<button (click)="createFood()">Create</button>

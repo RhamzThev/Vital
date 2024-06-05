@@ -23,7 +23,7 @@ export class LoginComponent {
     onSubmit() {
         this.auth.login(this.username, this.password).subscribe({
             next: (v) => {
-                this.router.navigate(['/']);
+                this.router.navigate([""]);
             },
             error: (e) => this.loginFailed = true,
         }

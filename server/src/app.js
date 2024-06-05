@@ -1,11 +1,14 @@
 import express from 'express';
 import session from 'express-session';
-import testRoutes from './routes/test.routes.js';
-import authRoutes from './routes/auth.routes.js'
-import userRoutes from './routes/user.routes.js'
 import { SECRET, URI } from './config/index.js';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
+
+import testRoutes from './routes/test.routes.js';
+import authRoutes from './routes/auth.routes.js'
+import userRoutes from './routes/user.routes.js'
+import foodRoutes from './routes/food.routes.js'
+import foodLogRoutes from './routes/food-log.routes.js'
 
 const app = express();
 
@@ -31,5 +34,7 @@ app.use(session({
 app.use('/api/tests', testRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/foods/logs', foodLogRoutes);
+app.use('/api/foods', foodRoutes);
 
 export default app;

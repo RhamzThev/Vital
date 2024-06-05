@@ -9,7 +9,7 @@ export const isLoggedIn: CanActivateFn = () => {
   if (authService.isLoggedIn()) {
     return true;
   } else {
-    router.navigate(['./auth/login']);
+    router.navigate(["auth", "login"]);
     return false;
   }
 };
@@ -21,7 +21,7 @@ export const isNotLoggedIn: CanActivateFn = () => {
   if (!authService.isLoggedIn()) {
     return true;
   } else {
-    router.navigate(['./']);
+    router.navigate(['']);
     return false;
   }
 };

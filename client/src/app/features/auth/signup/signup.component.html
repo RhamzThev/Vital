@@ -5,10 +5,14 @@
     <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
     <h3>Additional Information</h3>
     <h6>Sex: </h6>
-    <h6>Male</h6>
-    <input type="radio" [(ngModel)]="sex" name="sex" value="male" />
-    <h6>Female</h6>
-    <input type="radio" [(ngModel)]="sex" name="sex" value="female" />
+    <label for="male">
+        <h6>Male</h6>
+    </label>
+    <input type="radio" [(ngModel)]="sex" name="male" value="male" />
+    <label for="female">
+        <h6>Female</h6>
+    </label>
+    <input type="radio" [(ngModel)]="sex" name="male" value="female" />
     <label for="birthdate">Birthdate: </label>
     <input type="date" [(ngModel)]="birthdate" name="birthdate" placeholder="Birthdate" required />
     <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight (in kilograms)" required />

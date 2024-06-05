@@ -1,0 +1,10 @@
+<button routerLink="../">Back</button>
+<h1>Log Form</h1>
+<h3>Date: <input [(ngModel)]="this.consumption_time" type="datetime-local"></h3>
+<h3>Food:
+    <select [(ngModel)]="this.selectedFood">
+        <option *ngFor="let food of this.foods" [ngValue]="food">{{ food.name }} ({{ food.calories }} cal)</option>
+    </select>
+</h3>
+<h3>Amount: <input [(ngModel)]="this.amount" type="number"> {{ this.selectedFood.units_type }}</h3>
+<button (click)="this.createFood()">Create</button>

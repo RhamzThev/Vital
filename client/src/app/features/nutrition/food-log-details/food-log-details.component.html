@@ -1,0 +1,19 @@
+<button routerLink="../">Back</button>
+<h1>Log Details</h1>
+<h3>Date: {{ isEditing ? '' : this.getDate() }}
+    <input *ngIf="isEditing" [(ngModel)]="this.updatedLog.consumption_time" type="datetime-local">
+</h3>
+<h3>Food: {{ isEditing ? '' : this.food.name }}
+    <select *ngIf="isEditing" [(ngModel)]="this.updatedFood">
+        <option *ngFor="let f of this.foods" [ngValue]="f">
+            {{ f.name }} ({{ f.calories }} cal)
+        </option>
+    </select>
+</h3>
+<h3>Amount: {{ isEditing ? '' : this.log.amount }}
+    <input *ngIf="isEditing" [(ngModel)]="this.updatedLog.amount" type="number">
+    {{ isEditing ? this.updatedFood.units_type : this.food.units_type }}
+</h3>
+<button (click)="toggleEdit()">{{ isEditing ? 'Cancel Edit' : 'Edit' }}</button>
+<button *ngIf="isEditing" (click)="saveChanges()">Save Changes</button>
+<button *ngIf="!isEditing" (click)="deleteLog()">Delete</button>

@@ -1,14 +1,14 @@
-import mongoose from 'mongoose';
-
-const { Schema, model } = mongoose;
+import mongoose, { Schema, model } from "mongoose";
+const { ObjectId } = mongoose.Types;
 
 const foodSchema = new Schema({
-    food_id: {
-        type: Schema.Types.ObjectId,
-        required: true
-    },
     name: {
         type: String,
+        required: true
+    },
+    units_type: {
+        type: String,
+        enum: ['g', 'ml'],
         required: true
     },
     units: {
@@ -32,7 +32,7 @@ const foodSchema = new Schema({
         required: true
     },
     user_id: {
-        type: Schema.Types.ObjectId,
+        type: ObjectId,
         required: true
     }
 });

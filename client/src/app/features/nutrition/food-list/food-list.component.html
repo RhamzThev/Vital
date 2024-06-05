@@ -1,0 +1,20 @@
+<button routerLink="../">Back</button>
+<h1>Food List</h1>
+<button routerLink="./create">Create New Food</button>
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Calories</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let food of this.foods;">
+            <td>{{ food.name }}</td>
+            <td>{{ food.calories }}</td>
+            <td>
+                <button [routerLink]="food._id">View</button>
+                <button (click)="deleteFood(food._id, food.name)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

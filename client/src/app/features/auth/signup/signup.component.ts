@@ -29,7 +29,7 @@ export class SignupComponent {
     const isoBirthdate = new Date(this.birthdate);
     this.auth.signup(this.username, this.password, this.email, this.sex, isoBirthdate, this.weight, this.height).subscribe({
       next: (v) => {
-        this.router.navigate(['/']);
+        this.router.navigate([""]);
       }
     }
     )

@@ -1,0 +1,22 @@
+<button routerLink="../">Back</button>
+<h1>Recent Logs</h1>
+<button routerLink="./create">Add New Log</button>
+<table>
+    <thead>
+        <th>Date</th>
+        <th>Food</th>
+        <th>Amount</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let log of this.sortedList();">
+            <td>{{ log.consumption_time.toLocaleString() }}</td>
+            <td>{{ log.food.name }}</td>
+            <td>{{ log.amount }}</td>
+            <td>
+                <button [routerLink]="log.id">View</button>
+                <button (click)="deleteLog(log.id, log.amount, log.food.name, log.consumption_time)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

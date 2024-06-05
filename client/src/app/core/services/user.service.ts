@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import User from '@declare/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
@@ -13,8 +14,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
 
-  getLoggedInUser(): Observable<any> {
-    return this.httpClient.get(`${this.url}/session`, { withCredentials: true });
+  getLoggedInUser(): Observable<User> {
+    return this.httpClient.get<User>(`${this.url}/session`, { withCredentials: true });
   }
 
 }
