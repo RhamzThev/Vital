@@ -1,32 +1,56 @@
-<button routerLink="../">Back</button>
-<h1>{{ isEditing ? '' : food.name }}
-
-    <input *ngIf="isEditing" [(ngModel)]="updatedFood.name" />
-</h1>
-<h3>Serving Size: {{ isEditing ? '' : food.units + " " + food.units_type }}
-    <ng-container *ngIf="isEditing">
-        <input type="number" [(ngModel)]="updatedFood.units" />
-        <label for="g">g</label>
-        <input id="g" type="radio" [(ngModel)]="updatedFood.units_type" name="units_type" value="g" />
-        <label for="ml">ml</label>
-        <input id="ml" type="radio" [(ngModel)]="updatedFood.units_type" name="units_type" value="ml" />
-    </ng-container>
-</h3>
-<h3>Calories: {{ isEditing ? '' : food.calories }}
-    <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.calories" />
-</h3>
-<h3>Fats: {{ isEditing ? '' : food.fats }}
-    <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.fats" />
-    g
-</h3>
-<h3>Carbs: {{ isEditing ? '' : food.carbs }}
-    <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.carbs" />
-    g
-</h3>
-<h3>Proteins: {{ isEditing ? '' : food.proteins }}
-    <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.proteins" />
-    g
-</h3>
-<button (click)="toggleEdit()">{{ isEditing ? 'Cancel Edit' : 'Edit' }}</button>
-<button *ngIf="isEditing" (click)="saveChanges()">Save Changes</button>
-<button *ngIf="!isEditing" (click)="deleteFood()">Delete</button>
+<div class="child flex-col large-gap">
+    <button class="self-start" routerLink="../">Back</button>
+    <div>
+        <label for="name">
+            <h1 *ngIf="!isEditing">{{food.name}}</h1>
+            <input *ngIf="isEditing" [(ngModel)]="updatedFood.name" />
+        </label>
+    </div>
+    <div class="grid">
+        <div class="grid-row-three">
+            <label for="units">Serving Size:</label>
+            <p *ngIf="!isEditing">{{ food.units + " " + food.units_type }}</p>
+            <ng-container *ngIf="isEditing">
+                <input type="number" [(ngModel)]="this.updatedFood.units">
+                <div class="flex-row medium-gap">
+                    <div class="flex-row medium-gap">
+                        <label for="g">g</label>
+                        <input id="g" type="radio" [(ngModel)]="this.updatedFood.units_type" name="units_type"
+                            value="g" />
+                    </div>
+                    <div class="flex-row medium-gap">
+                        <label for="ml">ml</label>
+                        <input id="ml" type="radio" [(ngModel)]="this.updatedFood.units_type" name="units_type"
+                            value="ml" />
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div class="grid-row-three">
+            <label for="calories">Calories:</label>
+            <p *ngIf="!isEditing">{{food.calories}}</p>
+            <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.calories" />
+        </div>
+        <div class="grid-row-three">
+            <label for="fats">Fats:</label>
+            <p *ngIf="!isEditing">{{food.fats+ " g"}}</p>
+            <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.fats" />
+            <p *ngIf="isEditing">g</p>
+        </div>
+        <div class="grid-row-three">
+            <label for="carbs">Carbs:</label>
+            <p *ngIf="!isEditing">{{food.carbs + " g"}}</p>
+            <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.carbs" />
+            <p *ngIf="isEditing">g</p>
+        </div>
+        <div class="grid-row-three">
+            <label for="proteins">Proteins:</label>
+            <p *ngIf="!isEditing">{{food.proteins + " g"}}</p>
+            <input *ngIf="isEditing" type="number" [(ngModel)]="updatedFood.proteins" />
+            <p *ngIf="isEditing">g</p>
+        </div>
+    </div>
+    <button (click)="toggleEdit()">{{ isEditing ? 'Cancel Edit' : 'Edit' }}</button>
+    <button *ngIf="isEditing" (click)="saveChanges()">Save Changes</button>
+    <button *ngIf="!isEditing" (click)="deleteFood()">Delete</button>
+</div>

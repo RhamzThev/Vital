@@ -1,15 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --minus-one: rgb(247, 247, 247);
+    --minus-two: rgb(239, 239, 239);
+    --minus-four: rgb(223, 223, 223);
+    --minus-eight: rgb(191, 191, 191);
+    --minus-16: rgb(127, 127, 127);
+}
+
 * {
     margin: 0;
     padding: 0;
+    font-family: Verdana, sans-serif;
 }
 
-.flex-horizontal {
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.parent {
+    width: 100%;
+    height: 100%;
+    background-color: var(--minus-four);
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.child {
+    box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.25);
+    border-radius: 0.5rem;
+
+    padding: 2.5rem 5rem;
+
+    justify-content: center;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.flex-row {
     display: flex;
     flex-direction: row;
 }
 
-.flex-vertical {
+.flex-col {
     display: flex;
     flex-direction: column;
 }
@@ -18,8 +59,20 @@
     justify-content: space-between;
 }
 
+.space-around {
+    justify-content: space-around;
+}
+
 .align-center {
     align-items: center;
+}
+
+.self-start {
+    align-self: flex-start;
+}
+
+.justify-center {
+    justify-content: center;
 }
 
 .align-left {
@@ -36,4 +89,47 @@
 
 .large-gap {
     gap: 1rem;
+}
+
+button {
+    background-color: rgb(63, 127, 255);
+    color: white;
+    border-width: 0;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+input,
+select {
+    border-width: 0;
+    background-color: rgb(191, 223, 255);
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+}
+
+table {
+    background-color: var(--minus-four);
+    border-radius: 0.25rem;
+}
+
+td,
+th {
+    padding: 0.5rem 1rem;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.grid-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.grid-row-three {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 0.25rem;
 }

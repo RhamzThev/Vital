@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 
 import User from "@declare/user"
+import { RouterLink } from '@angular/router';
 
 const YEAR_IN_MS = 3.154e+10;
 const KG_IN_LBS = 2.20462;
 const IN_IN_CM = 2.54
 
 @Component({
-  selector: 'app-edit',
+  selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

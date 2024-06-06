@@ -1,10 +1,10 @@
-<div class="flex-horizontal align-center space-between">
+<div class="header flex-row align-center space-between">
     <a routerLink="/">
-        <h1>Logo</h1>
+        <h1>Vital</h1>
     </a>
-    <div>
+    <div class="">
         <button (click)="toggleDropdown()">Icon</button>
-        <div class="flex-vertical small-gap" *ngIf="dropdownOpen">
+        <div class="dropdown flex-col small-gap" *ngIf="dropdownOpen">
             <a routerLink="/profile">Profile</a>
             <a (click)="logOut()">Log Out</a>
         </div>
