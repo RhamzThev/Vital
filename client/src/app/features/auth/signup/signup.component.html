@@ -1,21 +1,40 @@
-<form (ngSubmit)="onSubmit()">
-    <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
-    <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
-    <input type="password" [(ngModel)]="repeatPassword" name="repeatPassword" placeholder="Repeat Password" required />
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
-    <h3>Additional Information</h3>
-    <h6>Sex: </h6>
-    <label for="male">
-        <h6>Male</h6>
-    </label>
-    <input type="radio" [(ngModel)]="sex" name="male" value="male" />
-    <label for="female">
-        <h6>Female</h6>
-    </label>
-    <input type="radio" [(ngModel)]="sex" name="male" value="female" />
-    <label for="birthdate">Birthdate: </label>
-    <input type="date" [(ngModel)]="birthdate" name="birthdate" placeholder="Birthdate" required />
-    <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight (in kilograms)" required />
-    <input type="number" [(ngModel)]="height" name="height" placeholder="Height (in centimeters)" required />
-    <button type="submit">Sign up</button>
-</form>
+<div class="parent center">
+    <div class="child flex-col center large-gap">
+        <h1>Sign Up</h1>
+        <!-- <p *ngIf="loginFailed">Invalid username or password.</p> -->
+        <form (ngSubmit)="onSubmit()">
+            <div class="flex-col medium-gap">
+                <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required />
+                <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required />
+                <input type="password" [(ngModel)]="repeatPassword" name="repeatPassword" placeholder="Repeat Password"
+                    required />
+                <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+                <h3>Additional Information</h3>
+
+                <div class="grid-row-three">
+                    <h6>Sex: </h6>
+                    <div class="flex-row medium-gap">
+                        <div class="flex-col medium-gap">
+                            <label for="male">
+                                <h6>Male</h6>
+                            </label>
+                            <input type="radio" [(ngModel)]="sex" name="male" value="male" />
+                        </div>
+                        <div class="flex-col medium-gap">
+                            <label for="female">
+                                <h6>Female</h6>
+                            </label>
+                            <input type="radio" [(ngModel)]="sex" name="female" value="female" />
+                        </div>
+                    </div>
+                </div>
+                <label for="birthdate">Birthdate: </label>
+                <input type="date" [(ngModel)]="birthdate" name="birthdate" placeholder="Birthdate" required />
+                <input type="number" [(ngModel)]="weight" name="weight" placeholder="Weight (in kilograms)" required />
+                <input type="number" [(ngModel)]="height" name="height" placeholder="Height (in centimeters)"
+                    required />
+                <button type="submit">Sign up</button>
+            </div>
+        </form>
+    </div>
+</div>

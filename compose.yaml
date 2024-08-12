@@ -1,0 +1,10 @@
+services:
+  client:
+    build: ./client
+    ports: 4200:4200
+    depends_on:
+      - server
+
+  server:
+    build: ./server
+    ports: 8080:8080

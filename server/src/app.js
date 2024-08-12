@@ -1,6 +1,6 @@
 import express from 'express';
 import session from 'express-session';
-import { SECRET, URI } from './config/index.js';
+import { SECRET, MONGODB_URI, URL, CLIENT_PORT } from './config/index.js';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
 
@@ -13,7 +13,7 @@ import foodLogRoutes from './routes/food-log.routes.js'
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: `${URL}:${CLIENT_PORT}`,
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
@@ -25,7 +25,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: URI
+        mongoUrl: MONGODB_URI
     }),
     cookie: { secure: false, httpOnly: false } // Set to true in production with HTTPS
 }));
