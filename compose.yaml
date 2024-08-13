@@ -1,10 +1,22 @@
 services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+      - CLIENT_PORT=${CLIENT_PORT}
+      - URL=${URL}
+      - MONGODB_URI=${MONGODB_URI}
+      - SECRET=${SECRET}
+    ports:
+      - 3000:3000
+
   client:
-    build: ./client
-    ports: 4200:4200
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 4200:80
     depends_on:
       - server
-
-  server:
-    build: ./server
-    ports: 8080:8080

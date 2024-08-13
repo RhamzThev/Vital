@@ -8,7 +8,7 @@ import Food from '@declare/food';
   providedIn: 'root'
 })
 export class FoodService {
-  url: string = "http://localhost:8080/api/foods"
+  url: string = "http://localhost:3000/api/foods"
 
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }

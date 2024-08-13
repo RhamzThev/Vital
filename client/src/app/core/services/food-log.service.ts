@@ -9,7 +9,7 @@ import FoodLog from '@declare/food-log';
   providedIn: 'root'
 })
 export class FoodLogService {
-  private url = 'http://localhost:8080/api/foods/logs'; // Replace with your actual API URL
+  private url = 'http://localhost:3000/api/foods/logs'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) { }
 

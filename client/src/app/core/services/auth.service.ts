@@ -9,7 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthService {
 
   SID: string = 'connect.sid'
-  url: string = "http://localhost:8080/api/auth"
+  url: string = "http://localhost:3000/api/auth"
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
 

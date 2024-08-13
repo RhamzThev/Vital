@@ -8,11 +8,17 @@
 }
 
 .dropdown {
+    z-index: 1;
     position: absolute;
     background-color: white;
     padding: 0.5rem;
     gap: 0.5rem;
     border-radius: 0.25rem;
+}
+
+.dropdown-item {
+    cursor: pointer;
+    color: rgb(63, 127, 255);
 }
 
 .xxx {

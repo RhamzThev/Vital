@@ -5,8 +5,8 @@
     <div class="">
         <button (click)="toggleDropdown()">Icon</button>
         <div class="dropdown flex-col small-gap" *ngIf="dropdownOpen">
-            <a routerLink="/profile">Profile</a>
-            <a (click)="logOut()">Log Out</a>
+            <a class="dropdown-item" routerLink="/profile">Profile</a>
+            <a class="dropdown-item" (click)="logOut()">Log Out</a>
         </div>
     </div>
 </div>
