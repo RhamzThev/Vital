@@ -1,6 +1,5 @@
 services:
   server:
-    image: ${ECR_REGISTRY}/${ECR_REPOSITORY_SERVER}:${IMAGE_TAG}
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -14,7 +13,6 @@ services:
       - 3000:3000
 
   client:
-    image: ${ECR_REGISTRY}/${ECR_REPOSITORY_CLIENT}:${IMAGE_TAG}
     build:
       context: ./client
       dockerfile: Dockerfile
