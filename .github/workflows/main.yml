@@ -44,6 +44,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           timeout: 5m
           script: |
+            ls -l
             docker compose pull
             docker compose stop ${{ secrets.ECR_REPOSITORY }} || true
             docker compose rm ${{ secrets.ECR_REPOSITORY }} || true
