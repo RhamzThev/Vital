@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthService {
 
   SID: string = 'connect.sid'
-  url: string = "http://localhost:3000/api/auth"
+  url: string = `${environment.apiUrl}:3000/api/auth`
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
 

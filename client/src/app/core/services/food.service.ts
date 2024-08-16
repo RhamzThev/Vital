@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import Food from '@declare/food';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
-  url: string = "http://localhost:3000/api/foods"
+  url: string = `${environment.apiUrl}:3000/api/foods`
 
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }

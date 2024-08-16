@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import FoodLog from '@declare/food-log';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodLogService {
-  private url = 'http://localhost:3000/api/foods/logs'; // Replace with your actual API URL
+  private url = `${environment.apiUrl}:3000/api/foods/logs`; // Replace with your actual API URL
 
   constructor(private http: HttpClient) { }
 

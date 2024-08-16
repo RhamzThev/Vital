@@ -6,10 +6,11 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
+
+COPY . .
 
 # Build the Angular app for production
-COPY . .
 RUN npm run build --prod
 
 # RUN echo ${PWD} && ls -lR
