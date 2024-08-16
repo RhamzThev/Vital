@@ -30,8 +30,9 @@ jobs:
       - name: Build and push Docker image to ECR
         env:
           ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-          # IMAGE_TAG: ${{ github.sha }}
+          ECR_REPOSITORY_CLIENT: ${{ secrets.ECR_REPOSITORY_CLIENT }}
+          ECR_REPOSITORY_SERVER: ${{ secrets.ECR_REPOSITORY_SERVER }}
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           docker compose build
           docker compose push
@@ -42,10 +43,15 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          timeout: 5m
           script: |
-            ls -l
+            # Navigate to the directory where Docker Compose is executed
+            cd Vital/
+
+            # Log in to Amazon ECR
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
+
+            # Pull the latest images
             docker compose pull
-            docker compose stop ${{ secrets.ECR_REPOSITORY }} || true
-            docker compose rm ${{ secrets.ECR_REPOSITORY }} || true
-            docker compose run -d --name ${{ secrets.ECR_REPOSITORY }} -p 80:80
+
+            # Start the containers using Docker Compose
+            docker compose up -d
