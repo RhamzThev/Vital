@@ -17,9 +17,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Log in to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v1
-        with:
-          region: us-east-2 # Replace with your AWS region
+        uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build and push Docker image to ECR
         env:
