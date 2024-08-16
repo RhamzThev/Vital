@@ -43,7 +43,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker compose pull ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
+            docker compose pull
             docker compose stop ${{ secrets.ECR_REPOSITORY }} || true
             docker compose rm ${{ secrets.ECR_REPOSITORY }} || true
-            docker compose run -d --name ${{ secrets.ECR_REPOSITORY }} -p 80:80 ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:${{ github.sha }}
+            docker compose run -d --name ${{ secrets.ECR_REPOSITORY }} -p 80:80
