@@ -44,4 +44,14 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "Hello World"
+            # Navigate to the directory where Docker Compose is executed
+            cd Vital/
+
+            # Log in to Amazon ECR
+            aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
+
+            # Pull the latest images
+            docker compose pull
+
+            # Start the containers using Docker Compose
+            docker compose up -d
