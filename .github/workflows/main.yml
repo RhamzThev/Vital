@@ -37,11 +37,12 @@ jobs:
           docker compose push
 
       - name: Deploy Docker image to AWS EC2
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          timeout: 5m
           script: |
             docker compose pull
             docker compose stop ${{ secrets.ECR_REPOSITORY }} || true
