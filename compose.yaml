@@ -1,18 +1,14 @@
 services:
   server:
+    image: ${ECR_REGISTRY}/${ECR_REPOSITORY_SERVER}:latest
+    env_file: ".env"
     build:
       context: ./server
       dockerfile: Dockerfile
-    environment:
-      - SERVER_PORT=${SERVER_PORT}
-      - CLIENT_PORT=${CLIENT_PORT}
-      - URL=${URL}
-      - MONGODB_URI=${MONGODB_URI}
-      - SECRET=${SECRET}
     ports:
       - 3000:3000
-
   client:
+    image: ${ECR_REGISTRY}/${ECR_REPOSITORY_CLIENT}:latest
     build:
       context: ./client
       dockerfile: Dockerfile
