@@ -13,7 +13,7 @@ import foodLogRoutes from './routes/food-log.routes.js'
 const app = express();
 
 app.use(cors({
-    origin: `${URL}:${CLIENT_PORT}`,
+    origin: `${URL}`,
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
