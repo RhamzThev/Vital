@@ -50,13 +50,13 @@ jobs:
             git pull
 
             # Log in to DockerHub
-            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+            sudo docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
             # Stop and remove the previous Docker session
-            docker compose down
+            sudo docker compose down
             
             # Pull the latest images
-            docker compose pull
+            sudo docker compose pull
 
             # Start the containers using Docker Compose
-            docker compose up -d
+            sudo docker compose up -d
