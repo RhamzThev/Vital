@@ -6,12 +6,9 @@ on:
       - main  # Change this to your default branch if it's not 'main'
 
 env:
-  IAM_ROLE: ${{ secrets.IAM_ROLE }}
-  AWS_REGION: ${{ secrets.AWS_REGION }}
-
-  ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
-  ECR_REPOSITORY_CLIENT: ${{ secrets.ECR_REPOSITORY_CLIENT }}
-  ECR_REPOSITORY_SERVER: ${{ secrets.ECR_REPOSITORY_SERVER }}
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKERHUB_REPOSITORY_CLIENT: ${{ secrets.DOCKERHUB_REPOSITORY_CLIENT }}
+  DOCKERHUB_REPOSITORY_SERVER: ${{ secrets.DOCKERHUB_REPOSITORY_SERVER }}
   MONGODB_URI: ${{ secrets.MONGODB_URI }}
   SECRET: ${{ secrets.SECRET }}
 
@@ -28,16 +25,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4 # More information on this action can be found below in the 'AWS Credentials' section
+      - name: Log in to DockerHub
+        uses: docker/login-action@v3
         with:
-          role-to-assume: ${{ secrets.IAM_ROLE }}
-          aws-region: ${{ env.AWS_REGION }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
-      - name: Log in to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v2
-
-      - name: Build and push Docker image to ECR
+      - name: Build and push Docker image to Docker Hub
         run: |
           docker compose build --no-cache
           docker compose push
@@ -45,18 +39,18 @@ jobs:
       - name: Deploy Docker image to AWS EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          envs: IAM_ROLE, AWS_REGION, ECR_REGISTRY, ECR_REPOSITORY_CLIENT, ECR_REPOSITORY_SERVER, MONGODB_URI, SECRET
+          host: ${{ secrets.GCE_HOST }}
+          username: ${{ secrets.GCE_USERNAME }}
+          key: ${{ secrets.GCE_SSH_KEY }}
+          envs: DOCKERHUB_USERNAME, DOCKERHUB_REPOSITORY_CLIENT, DOCKERHUB_REPOSITORY_SERVER, MONGODB_URI, SECRET
           script: |
             # Navigate to the directory where Docker Compose is executed
             cd Vital/
 
             git pull
 
-            # Log in to Amazon ECR
-            aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REGISTRY 
+            # Log in to DockerHub
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
             # Stop and remove the previous Docker session
             docker compose down

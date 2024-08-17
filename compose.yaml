@@ -1,6 +1,6 @@
 services:
   server:
-    image: ${ECR_REGISTRY}/${ECR_REPOSITORY_SERVER}:latest
+    image: ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPOSITORY_SERVER}:latest
     build:
       context: ./server
       dockerfile: Dockerfile
@@ -14,7 +14,7 @@ services:
       - 3000:3000
 
   client:
-    image: ${ECR_REGISTRY}/${ECR_REPOSITORY_CLIENT}:latest
+    image: ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPOSITORY_CLIENT}:latest
     build:
       context: ./client
       dockerfile: Dockerfile
