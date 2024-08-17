@@ -36,7 +36,7 @@ jobs:
           docker compose build --no-cache
           docker compose push
 
-      - name: Deploy Docker image to AWS EC2
+      - name: Deploy Docker image to GCP GCE
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.GCE_HOST }}
