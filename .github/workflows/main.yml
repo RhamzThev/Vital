@@ -34,7 +34,7 @@ jobs:
           ECR_REPOSITORY_SERVER: ${{ secrets.ECR_REPOSITORY_SERVER }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker compose build
+          docker compose build --no-cache
           docker compose push
 
       - name: Deploy Docker image to AWS EC2
