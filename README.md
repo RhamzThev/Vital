@@ -23,7 +23,7 @@ Run the following command to start the development server:
 ng serve
 ```
 
-Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Navigate to `http://localhost:80/`. The application will automatically reload if you change any of the source files.
 
 ### Code Scaffolding
 
