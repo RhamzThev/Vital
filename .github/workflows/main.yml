@@ -33,6 +33,8 @@ jobs:
           ECR_REPOSITORY_CLIENT: ${{ secrets.ECR_REPOSITORY_CLIENT }}
           ECR_REPOSITORY_SERVER: ${{ secrets.ECR_REPOSITORY_SERVER }}
           IMAGE_TAG: ${{ github.sha }}
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          SECRET: ${{ secrets.SECRET }}
         run: |
           docker compose build --no-cache
           docker compose push
