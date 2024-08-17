@@ -45,11 +45,11 @@ jobs:
 
       - name: Deploy Docker image to AWS EC2
         uses: appleboy/ssh-action@v1.0.3
-        envs: IAM_ROLE, AWS_REGION, ECR_REGISTRY, ECR_REPOSITORY_CLIENT, ECR_REPOSITORY_SERVER, IMAGE_TAG, MONGODB_URI, SECRET
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          envs: IAM_ROLE, AWS_REGION, ECR_REGISTRY, ECR_REPOSITORY_CLIENT, ECR_REPOSITORY_SERVER, IMAGE_TAG, MONGODB_URI, SECRET
           script: |
             # Navigate to the directory where Docker Compose is executed
             cd Vital/
